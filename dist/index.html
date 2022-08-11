@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+
+    <style>
+        .tab {
+            background: black;
+            color: white;
+            padding: 20px;
+            margin-top: 8px;
+
+        }
+    </style>
+    </head>
+    <body>
+
+        <h1 >CIAO !</h1>
+        <p id="data"></p>
+
+
+        <script> 
+          const socket = io();
+          
+          socket.emit("data");
+          socket.on('new_data', (response) => {
+
+           response.forEach(el => {
+            document.getElementById("data").innerHTML += "<p class=\"tab\">id: "+el.id + " nickname: "+el.nickname+"</p>";
+           })
+          
+        });
+        </script>
+    
+   
+
+    </body>
+</html>
+
+
